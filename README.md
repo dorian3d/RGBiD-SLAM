@@ -1,42 +1,52 @@
 RGBiD-SLAM is a direct and dense visual SLAM algorithm for RGB-D cameras running in CPU and GPU. The motion of the RGB-D camera is tracked by pixelwise minimisation of the photometric error as well as the geometric error expressed in inverse depth (iD) of the current frame with respect to a reference view. A smooth dense 3D reconstruction of the environment is computed by fusing close raw frames into one single keyframe. The system uses a Bag of Words approach to close loops and improve the reconstrction and provides also in real-time a segmentation of the scene based on the structure of its elements.
 
-**Related Publications**
+#Related Publications
 
 [1] D. Gutierrez-Gomez, W. Mayol-Cuevas, J.J. Guerrero. Inverse Depth for Accurate Photometric and Geometric Error Minimisation in RGB-D Dense Visual Odometry. In Proc. IEEE/RSJ Int. Conf. on Robotics and Automation (ICRA). 2015.
 
 [2] D. Gutierrez-Gomez, W. Mayol-Cuevas, J.J. Guerrero. Dense rgb-d visual odometry using inverse depth. Robotics and Autonomous Systems (RAS), 75(Part B):571 – 583. Special Section on 3D Perception with PCL. 2016.
 
+#License
+RGBiD-SLAM is licensed under GNU General Public License Version 3 (see LICENSE.txt)
 
+#Dependencies
 
-This code has been compiled and executed succesfully in an Ubuntu 12.04 64 bits system with ros hydro and 14.04 64 bits with ros indigo
+This code has been compiled and executed succesfully in Ubuntu 12.04 64 bits system with ros hydro and Ubuntu 14.04 64 bits with ros indigo.
 It has been tested only with an Asus Xtion Pro Live RGB-D camera
 At the moment I cannot guarantee that the system will work with more recent Ubuntu or ROS distros or other RGB-D sensors
 The library requires a CUDA capable NVIDIA GPU (the code has been compiled and works under 5.0 architecture but should work also for 2.x, 3.x and 5.x architectures)
-You will need to install cuda toolkit v7.0 or later (see INFO_CUDA_INSTALLATION.txt)
+You will need to install cuda toolkit v7.0 or later.
 
-Dependencies:  
+Before going further follow the instructions in INFO_CUDA_INSTALLATION.txt
+
 Install the following packages through synaptic software manager
 
-ros-your_installed_distro-openni2-launch
+ros-indigo-desktop
+ros-indigo-openni2-launch
 libsuitesparse-dev 
 pcl-1.7-all-dev
 libboost-dev
 
-If you are using the Asus Xtion Pro Live camera you have to do this:
+If you are using the Asus Xtion Pro Live camera you have execute this in console:
 
-$ sudo gedit /etc/openni/GlobalDefaults.ini
-Find the line that says ";UsbInterface=2" and uncomment it 
-Save the file
+	sudo gedit /etc/openni/GlobalDefaults.ini
 
-To install the program:
+Then find the line that says ";UsbInterface=2" and uncomment it. Save the file.
 
-1) First we compile the external dependencies
-  $ cd Thirdparty
-  $ chmod +x build_dir.sh
-  $ chmod +x build_all_dirs.sh
-  $ ./build_all_dirs.sh  
+
+#Installation
+
+First we compile the external dependencies included in this distribution:
+  	cd Thirdparty
+  	chmod +x build_dir.sh
+  	chmod +x build_all_dirs.sh
+  	./build_all_dirs.sh  
   
- 1b) In src/cuda/device.hpp change the global variables depending on the CUDA architecture of your NVIDIA GPU
+ This code uses variables dependent on the CUDA architecture of your NVIDIA GPU for optimal performance, unfourtunately is it not posible to define them at compile time for the bridge functions implemented in host (CPU). IN console write:
+ 
+ 	gedit ~/rgbidSLAM/src/cuda/device.hpp 
+ 	
+ change the global variables (those preceded by #define) depending on the CUDA architecture of your NVIDIA GPU
   
 2) Compile the program
   $ cd ~/rgbidSLAM/
