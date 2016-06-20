@@ -18,16 +18,20 @@ It has been tested only with an Asus Xtion Pro Live RGB-D camera.
 At the moment I cannot guarantee that the system will work with more recent Ubuntu or ROS distros or other RGB-D sensors.
 The library requires a CUDA capable NVIDIA GPU. The code has been compiled and works under 5.0 architecture but should work also for 2.x, 3.x and 5.x architectures. Check which is your card's architecture [here](https://en.wikipedia.org/wiki/CUDA#GPUs_supported)
 
-The SLAM algorithm initialises two independent streams in GPU for each of two host threads in CPU. This functionality is only available in cuda toolkit v7.0 or later (see [this](https://devblogs.nvidia.com/parallelforall/gpu-pro-tip-cuda-7-streams-simplify-concurrency/)
+The RGBiD-SLAM algorithm initialises two independent streams in GPU (one for the  camera tracking front-end, and one for the loop closing back-end). This functionality is only available in cuda toolkit v7.0 or later (see [this link](https://devblogs.nvidia.com/parallelforall/gpu-pro-tip-cuda-7-streams-simplify-concurrency/))
 
-Before going further follow the instructions in INFO_CUDA_INSTALLATION.txt
+Setup of NVIDIA GPUs and enabling of CUDA in Ubuntu systems is not trivial (specially in a laptop). Before going further plase make sure you have followed the steps described in INFO_CUDA_INSTALLATION.txt 
 
 Install the following packages through synaptic software manager
 
 ros-indigo-desktop
+
 ros-indigo-openni2-launch
+
 libsuitesparse-dev 
+
 pcl-1.7-all-dev
+
 libboost-dev
 
 If you are using the Asus Xtion Pro Live camera you have execute this in console:
@@ -39,9 +43,11 @@ Then find the line that says ";UsbInterface=2" and uncomment it. Save the file.
 
 #Compilation
 
+Download the repository in a zip file
+
 First we compile the external dependencies included in this distribution:
 
-  	cd ~/rgbidSLAM/ThirdParty
+  	cd ~/RGBiD-SLAM/ThirdParty
   	
   	chmod +x build_dir.sh build_all_dirs.sh
   	
@@ -49,13 +55,13 @@ First we compile the external dependencies included in this distribution:
   
  This code uses variables dependent on the CUDA architecture of your NVIDIA GPU for optimal performance, unfourtunately it is not posible to define them automatically at compile time for the bridge functions implemented in host (CPU). We have to do it manually before compiling:
  
- 	gedit ~/rgbidSLAM/src/cuda/device.hpp 
+ 	gedit ~/RGBiD-SLAM/src/cuda/device.hpp 
  	
  change the global variables (those preceded by #define) depending on the CUDA architecture of your NVIDIA GPU
   
 Now we proceed to compile the program:
 
-	cd ~/rgbidSLAM/
+	cd ~/RGBiD-SLAM/
 	
 	mkdir build
 	
@@ -65,9 +71,9 @@ Now we proceed to compile the program:
 	
 	make -j4
   
-Unzip ~/rgbidSLAM/data/ORBvoc.yml.zip
+Unzip ~/RGBiD-SLAM/data/ORBvoc.yml.zip
 
-Then copy configuration files from ~/rgbidSLAM/config_data into ~/rgbidSLAM/build/tools/
+Then copy configuration files from ~/RGBiD-SLAM/config_data into ~/RGBiD-SLAM/build/tools/
 
 #Usage
 
@@ -85,10 +91,10 @@ In other terminal tab:
   
 In other terminal tab (dont forget to write 'optirun' first if executing the app on a laptop):  
 
-        cd ~/rgbidSLAM/build/tools/    
+        cd ~/RGBiD-SLAM/build/tools/    
         {optirun} ./RGBID_SLAMapp -config visodoRGBDconfig.ini -calib calibration_factory.ini  
     
-You can run the SLAM app on a previously recorded sequence of images. This sequence must be saved in the same format as sequences in the TUM benchmark dataset. Check that the RGB and depth images are synchronised checking the rgb.txt and depth.txt files within the dataset folder. 
+You can run the SLAM app on a previously recorded sequence of images. This sequence must be saved in the same format as sequences in the TUM benchmark dataset. Verify first that the RGB and depth images are synchronised checking the rgb.txt and depth.txt files within the dataset folder. 
       	
       	./RGBID_SLAMapp  -eval folder_where_the_sequence_is -config visodoRGBDconfig.ini -calib calibration_factory.ini
 
@@ -117,7 +123,7 @@ shots of each stream are taken consecutively. As a consequence, to obtain images
 for calibration, one should design an experimental setup where the 
 pattern and the camera can be rigidly fixed before taking one capture.
 
-Note that in order to calibrate the depth(IR) camera as well as the stereo transofrmation btw. RGB and depth(IR) cameras you have to set "depth_registration:=false" in point 4.
+Note that in order to calibrate the depth(IR) camera as well as the stereo transofrmation btw. RGB and depth(IR) cameras you have to set "depth_registration:=false" in the "roslaunch" command.
    
  ###Disclaimer
  
