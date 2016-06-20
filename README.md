@@ -65,6 +65,8 @@ Now we proceed to compile the program:
 	
 	make -j4
   
+Unzip ~/rgbidSLAM/data/ORBvoc.yml.zip
+
 Then copy configuration files from ~/rgbidSLAM/config_data into ~/rgbidSLAM/build/tools/
 
 #Usage
