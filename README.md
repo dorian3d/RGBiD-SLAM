@@ -1,3 +1,8 @@
+RGBiD-SLAM is a direct and dense visual SLAM algorithm for RGB-D cameras running in CPU and GPU. The motion of the RGB-D camera is tracked by pixelwise minimisation of the photometric error as well as the geometric error expressed in inverse depth (iD) of the current frame with respect to a reference view. A smooth dense 3D reconstruction of the environment is computed by fusing close raw frames into one single keyframe. The system uses a Bag of Words approach to close loops and improve the reconstrction and provides also in real-time a segmentation of the scene based on the structure of its elements.
+
+RELATED PUBLICATIONS:
+
+
 This code has been compiled and executed succesfully in an Ubuntu 12.04 64 bits system with ros hydro and 14.04 64 bits with ros indigo
 It has been tested only with an Asus Xtion Pro Live RGB-D camera
 At the moment I cannot guarantee that the system will work with more recent Ubuntu or ROS distros or other RGB-D sensors
