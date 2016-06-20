@@ -37,9 +37,11 @@ Then find the line that says ";UsbInterface=2" and uncomment it. Save the file.
 #Installation
 
 First we compile the external dependencies included in this distribution:
+
   	cd Thirdparty
-  	chmod +x build_dir.sh
-  	chmod +x build_all_dirs.sh
+  	
+  	chmod +x build_dir.sh build_all_dirs.sh
+  	
   	./build_all_dirs.sh  
   
  This code uses variables dependent on the CUDA architecture of your NVIDIA GPU for optimal performance, unfourtunately is it not posible to define them at compile time for the bridge functions implemented in host (CPU). IN console write:
