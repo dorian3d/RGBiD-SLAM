@@ -1,3 +1,5 @@
+#RGBiD-SLAM
+
 RGBiD-SLAM is a direct and dense visual SLAM algorithm for RGB-D cameras running in CPU and GPU. The motion of the RGB-D camera is tracked by pixelwise minimisation of the photometric error as well as the geometric error expressed in inverse depth (iD) of the current frame with respect to a reference view. A smooth dense 3D reconstruction of the environment is computed by fusing close raw frames into one single keyframe. The system uses a Bag of Words approach to close loops and improve the reconstrction and provides also in real-time a segmentation of the scene based on the structure of its elements.
 
 #Related Publications
@@ -114,7 +116,7 @@ pattern and the camera can be rigidly fixed before taking one capture.
 
 Note that in order to calibrate the depth(IR) camera as well as the stereo transofrmation btw. RGB and depth(IR) cameras you have to set "depth_registration:=false" in point 4.
    
- ### Disclaimer
+ ###Disclaimer
  
  There is the option of disabling registration also when running the SLAM app an use a customised calibration 
  for the complete RGB-D sensor (RGB intrinsics, IR intrinsics, RGB-IR stereo, depth distortion). 
