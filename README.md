@@ -18,7 +18,7 @@ It has been tested only with an Asus Xtion Pro Live RGB-D camera.
 At the moment I cannot guarantee that the system will work with more recent Ubuntu or ROS distros or other RGB-D sensors.
 The library requires a CUDA capable NVIDIA GPU. The code has been compiled and works under 5.0 architecture but should work also for 2.x, 3.x and 5.x architectures. Check which is your card's architecture [here](https://en.wikipedia.org/wiki/CUDA#GPUs_supported)
 
-The SLAM algorithm initialises two independent streams in GPU for each of two host threads in CPU. This functionality is only available in cuda toolkit v7.0 or later (see [this]https://devblogs.nvidia.com/parallelforall/gpu-pro-tip-cuda-7-streams-simplify-concurrency/)
+The SLAM algorithm initialises two independent streams in GPU for each of two host threads in CPU. This functionality is only available in cuda toolkit v7.0 or later (see [this](https://devblogs.nvidia.com/parallelforall/gpu-pro-tip-cuda-7-streams-simplify-concurrency/)
 
 Before going further follow the instructions in INFO_CUDA_INSTALLATION.txt
 
