@@ -47,7 +47,7 @@ First we compile the external dependencies included in this distribution:
   	
   	./build_all_dirs.sh  
   
- This code uses variables dependent on the CUDA architecture of your NVIDIA GPU for optimal performance, unfourtunately it is not posible to define them at compile time for the bridge functions implemented in host (CPU). We have to do it manually before compiling:
+ This code uses variables dependent on the CUDA architecture of your NVIDIA GPU for optimal performance, unfourtunately it is not posible to define them automatically at compile time for the bridge functions implemented in host (CPU). We have to do it manually before compiling:
  
  	gedit ~/rgbidSLAM/src/cuda/device.hpp 
  	
