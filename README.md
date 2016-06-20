@@ -112,7 +112,7 @@ shots of each stream are taken consecutively. As a consequence, to obtain images
 for calibration, one should design an experimental setup where the 
 pattern and the camera can be rigidly fixed before taking one capture.
 
-Note that in order to calibrate the depth(IR) camera as well as the stereo transofrmation btw. RGB and depth(IR) cameras you have to set "depth_registration:=false" in point 4
+Note that in order to calibrate the depth(IR) camera as well as the stereo transofrmation btw. RGB and depth(IR) cameras you have to set "depth_registration:=false" in point 4.
    
  ### Disclaimer
  
