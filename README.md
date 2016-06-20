@@ -34,7 +34,7 @@ If you are using the Asus Xtion Pro Live camera you have execute this in console
 Then find the line that says ";UsbInterface=2" and uncomment it. Save the file.
 
 
-#Installation
+#Compilation
 
 First we compile the external dependencies included in this distribution:
 
