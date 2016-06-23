@@ -14,7 +14,7 @@ RGBiD-SLAM is licensed under GNU General Public License Version 3 (see LICENSE.t
 #Dependencies
 
 This code has been compiled and executed succesfully in Ubuntu 12.04 64 bits system with ros hydro and Ubuntu 14.04 64 bits with ros indigo.
-It has been tested only with an Asus Xtion Pro Live RGB-D camera.
+Apart from off-line sequences recorded in the TUM dataset format, on-line it has been tested only with an Asus Xtion Pro Live RGB-D camera.
 At the moment I cannot guarantee that the system will work with more recent Ubuntu or ROS distros or other RGB-D sensors.
 The library requires a CUDA capable NVIDIA GPU. The code has been compiled and works under 5.0 architecture but should work also for 2.x, 3.x and 5.x architectures. Check which is your card's architecture [here](https://en.wikipedia.org/wiki/CUDA#GPUs_supported)
 
