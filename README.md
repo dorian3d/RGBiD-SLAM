@@ -16,7 +16,7 @@ RGBiD-SLAM is licensed under GNU General Public License Version 3 (see LICENSE.t
 This code has been compiled and executed succesfully in Ubuntu 12.04 64 bits system with ros hydro and Ubuntu 14.04 64 bits with ros indigo.
 Apart from off-line sequences recorded in the TUM dataset format, on-line it has been tested only with an Asus Xtion Pro Live RGB-D camera.
 At the moment I cannot guarantee that the system will work with more recent Ubuntu or ROS distros or other RGB-D sensors.
-The library requires a CUDA capable NVIDIA GPU. The code has been compiled and works under 5.0 architecture but should work also for 2.x, 3.x and 5.x architectures. Check which is your card's architecture [here](https://en.wikipedia.org/wiki/CUDA#GPUs_supported)
+The library requires a CUDA capable NVIDIA GPU. The code has been compiled and works under 5.0 architecture but should work also for 2.x, 3.x and 5.x architectures. Check which is your GPU's architecture [here](https://en.wikipedia.org/wiki/CUDA#GPUs_supported)
 
 The RGBiD-SLAM algorithm initialises two independent streams in GPU (one for the  camera tracking front-end, and one for the loop closing back-end). This functionality is only available in cuda toolkit v7.0 or later (see [this link](https://devblogs.nvidia.com/parallelforall/gpu-pro-tip-cuda-7-streams-simplify-concurrency/))
 
